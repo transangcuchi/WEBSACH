@@ -7,7 +7,7 @@
             @foreach ($book as $item)
                 <div class="col-3 py-3 game">
                     <div class="center">
-                        <a href="#"><img src="images/{{ $item['img'] }}" alt=""
+                        <a href="#"><img src="images/book/{{ $item['img'] }}" alt=""
                                 class="card-img-top game-img"></a>
                     </div>
                     <div class="card-body text-center">

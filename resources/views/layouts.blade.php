@@ -69,7 +69,7 @@
     </nav>
 
     <div class="carousel">
-        @yield('carousel')
+        @include('carousel')
     </div>
 
     <div class="book">
