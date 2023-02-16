@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+<title>{{ $title }}</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Trang Chủ</title>
-    @include('cdn')
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-</head>
-
-<body>
+<div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-center">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">&nbsp;</a>
@@ -67,15 +57,4 @@
             </div>
         </div>
     </nav>
-
-    <div class="carousel">
-        @include('carousel')
-    </div>
-
-    <div class="book">
-        @yield('content')
-    </div>
-
-</body>
-
-</html>
+</div>
