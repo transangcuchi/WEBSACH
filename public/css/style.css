@@ -27,6 +27,7 @@
 .game-img{
   width: 161px;
   height: 223px;
+  object-fit: cover;
 }
 
 .center-img{
