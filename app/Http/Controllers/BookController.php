@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
-use App\Models\Category;
 use App\Models\News;
+use App\Models\Category;
+use App\Models\Publisher;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BookController extends Controller
 {
@@ -55,7 +57,13 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        
+        $book = Book::find($id);
+        $category = Category::all();
+
+        return view('components.books.detail', [
+            'category' => $category,
+            'book' => $book,
+        ]);
     }
 
     /**

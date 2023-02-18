@@ -3,7 +3,7 @@
 <div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-center">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">&nbsp;</a>
+            <a class="navbar-brand" href="{{ route('index') }}">&nbsp;</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -11,7 +11,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href=""><i class="fa-solid fa-house"></i> Trang Chủ</a>
+                        <a class="nav-link" href="{{ route('index') }}"><i class="fa-solid fa-house"></i> Trang Chủ</a>
                     </li>
                     <div class="collapse navbar-collapse">
                         <ul class="navbar-nav">
