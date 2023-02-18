@@ -46,12 +46,23 @@
                             Hàng</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                       
+                            @if (!isset($_REQUEST['user']))
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
                             aria-expanded="false"><i class="fa-solid fa-user"></i> Tài Khoản</a>
-                        <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href=" {{ route('login') }} ">Đăng Nhập</a></li>
-                            <li><a class="dropdown-item" href="#">Đăng Ký</a></li>
-                        </ul>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" href=" {{ route('login') }} ">Đăng Nhập</a></li>
+                                <li><a class="dropdown-item" href="#">Đăng Ký</a></li>
+                            </ul>
+                            @else
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-expanded="false"><i class="fa-solid fa-user"></i> {{ $_REQUEST['user'] }}</a>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" href=" # ">Thông tin</a></li>
+                                <li><a class="dropdown-item" href="#">Đăng xuất</a></li>
+                            </ul>
+                            @endif
+                        
                     </li>
                 </ul>
             </div>

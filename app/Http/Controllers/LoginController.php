@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -13,7 +15,8 @@ class LoginController extends Controller
      */
     public function index()
     {
-        return view('components.user.login');
+        $cat = Category::all();
+        return view('components.user.login',[ 'category'=> $cat]);
     }
 
     /**
@@ -43,9 +46,18 @@ class LoginController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        
+        $email = $_REQUEST['email'];
+        $pass = $_REQUEST['password'];
+        $user = User::find($email);
+        if($pass == $user['password'])
+        {
+           return redirect(route('index',['user'=>$user['name']]));
+        }
+        
+
     }
 
     /**

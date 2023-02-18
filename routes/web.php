@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
+use PharIo\Manifest\Email;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,7 @@ Route::get('/book/{id}', [BookController::class, 'show'])->name('detail');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 
+Route::post('/user.login', [LoginController::class, 'show'])->name('user.login');
 // Route::post('/', [Book::class, 'store'])->name('store');
 // Route::patch('/{id}', [Book::class, 'update'])->name('update');
 // Route::delete('/{id}', [Book::class, 'destroy'])->name('delete');
