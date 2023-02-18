@@ -49,7 +49,7 @@
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
                             aria-expanded="false"><i class="fa-solid fa-user"></i> Tài Khoản</a>
                         <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="#">Đăng Nhập</a></li>
+                            <li><a class="dropdown-item" href=" {{ route('login') }} ">Đăng Nhập</a></li>
                             <li><a class="dropdown-item" href="#">Đăng Ký</a></li>
                         </ul>
                     </li>

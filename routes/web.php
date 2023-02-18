@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\LoginController;
 use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
@@ -26,7 +27,9 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/create', [Book::class, 'create'])->name('create');
 
 Route::get('/', [BookController::class, 'index'])->name('index');
-Route::get('/{id}', [BookController::class, 'show'])->name('detail');
+Route::get('/book/{id}', [BookController::class, 'show'])->name('detail');
+
+Route::get('/login', [LoginController::class, 'index'])->name('login');
 
 // Route::post('/', [Book::class, 'store'])->name('store');
 // Route::patch('/{id}', [Book::class, 'update'])->name('update');
