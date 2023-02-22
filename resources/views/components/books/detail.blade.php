@@ -17,7 +17,7 @@
     <div class="container pt-5">
         <div class="row">
             <div class="col-4">
-                <img src="{{ asset('images/book/' . $book['img']) }}" alt="">
+                <img  src="{{ asset('images/book/' . $book['img']) }}" alt="">
             </div>
             <div class="col-8">
                 <div>

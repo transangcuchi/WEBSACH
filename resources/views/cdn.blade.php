@@ -6,5 +6,6 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
 
 
+
 {{-- Không được để link cdn dưới này --}}
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">

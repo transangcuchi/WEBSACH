@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\LoginController;
 use App\Models\Book;
@@ -37,4 +38,6 @@ Route::post('/user.login', [LoginController::class, 'show'])->name('user.login')
 // Route::patch('/{id}', [Book::class, 'update'])->name('update');
 // Route::delete('/{id}', [Book::class, 'destroy'])->name('delete');
 
+Route::get('/admin', [AdminController::class, 'index'])->name('adminindex');
+Route::get('/admin/{id}', [AdminController::class, 'show'])->name('adminshow');
 
