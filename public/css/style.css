@@ -1,5 +1,6 @@
-:root{
+:root {
     --size: 24px;
+    --myBlue: #358de6;
 }
 
 .dropdown:hover > .dropdown-menu {
@@ -94,5 +95,23 @@ swiper-slide img {
 .icon-sm {
     width: 2rem;
     height: 2rem;
-    
+}
+
+.detail-img {
+    box-sizing: border-box;
+    width: 291px;
+    height: 403px;
+    left: 141px;
+    top: 135px;
+    border: 1px solid #000000;
+}
+
+.btn-quantity {
+    background-color: var(--myBlue);
+    color: white;
+}
+
+.btn-default:hover {
+    border-color: var(--myBlue);
+    color: var(--myBlue);
 }

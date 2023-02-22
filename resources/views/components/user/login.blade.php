@@ -1,7 +1,6 @@
 @include('cdn')
-<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 <div>
-    <x-header title="Đăng nhập" :category="$category" />
+    <x-header title="Đăng Nhập" :category="$category" />
 </div>
 <div class="container ">
     <label class=" d-flex justify-content-center "><b>
