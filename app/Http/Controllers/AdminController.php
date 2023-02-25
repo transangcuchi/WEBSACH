@@ -17,7 +17,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-       $book = Book::all();
+       $book = Book::orderBy('book_name')->paginate(6);
        return view('components.admin.index', ['book'=>$book]);
     }
 
