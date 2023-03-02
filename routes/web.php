@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\SanphamController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\AdminController;
@@ -35,9 +37,14 @@ Route::post('/user.login', [LoginController::class, 'show'])->name('user.login')
 // Route::delete('/{id}', [Book::class, 'destroy'])->name('delete');
 
 
-Route::get('/cart', [CartController::class, 'index'])->name('cartindex');
-Route::get('/cart/{id}', [CartController::class, "create"])->name('cartuser');
-Route::get('cart/destroy', [CartController::class,"clearcart"])->name('clearcart');
 
-Route::get('/admin', [AdminController::class, 'index'])->name('adminindex');
-Route::get('/admin/{id}', [AdminController::class, 'show'])->name('adminshow');
+Route::get('/admin/dashboard', [DashboardController::class, 'Index'])->name('admindashboard');
+
+Route::get('/admin/sanpham', [SanphamController::class, 'Index'])->name('sanpham');
+Route::get('/admin/themsanpham', [SanphamController::class, 'AddSanPham'])->name('themsanpham');
+Route::post('/admin/store-sanpham', [SanphamController::class, 'StoreSanpham'])->name('storesanpham');
+Route::get('/admin/edit-sanpham-{id}', [SanphamController::class, 'EditSanpham'])->name('editsanpham');
+Route::post('/admin/update-sanpham', [SanphamController::class, 'UpdateSanpham'])->name('updatesanpham');
+Route::get('/admin/xoa-sanpham-{id}', [SanphamController::class, 'XoaSanpham'])->name('xoasanpham');
+Route::get('/admin/edit-hinh-sanpham-{id}', [SanphamController::class, 'EditHinhSanpham'])->name('edithinhsanpham');
+Route::post('/admin/update-hinh-sanpham', [SanphamController::class, 'UpdateHinh'])->name('updatehinhsanpham');
