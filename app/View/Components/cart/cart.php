@@ -4,21 +4,16 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class Header extends Component
+class cart extends Component
 {
     /**
      * Create a new component instance.
      *
      * @return void
      */
-
-    public $title;
-    public $category;
-
-    public function __construct($title, $category)
+    public function __construct()
     {
-        $this->title = $title;
-        $this->category = $category;
+        //
     }
 
     /**
@@ -28,6 +23,7 @@ class Header extends Component
      */
     public function render()
     {
-        return view('components.header');
+        
+        return view('components.cart');
     }
 }

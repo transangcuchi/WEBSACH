@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use App\Category;
 use Illuminate\Http\Request;
 
-class LoginController extends Controller
+class CartController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +13,9 @@ class LoginController extends Controller
      */
     public function index()
     {
-        $cat = Category::all();
-        return view('components.user.login', ['category' => $cat]);
+        if (!isset($_SESSION))
+            session_start();
+        return view("components.cart");
     }
 
     /**
@@ -26,7 +25,8 @@ class LoginController extends Controller
      */
     public function create()
     {
-        //
+        
+
     }
 
     /**
@@ -48,12 +48,7 @@ class LoginController extends Controller
      */
     public function show($id)
     {
-        $email = $_REQUEST['email'];
-        $pass = $_REQUEST['password'];
-        $user = User::find($email);
-        if ($pass == $user['password']) {
-            return redirect(route('index', ['user' => $user['name']]));
-        }
+        //
     }
 
     /**
