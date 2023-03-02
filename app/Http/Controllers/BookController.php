@@ -27,6 +27,35 @@ class BookController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    public function search()
+    {
+        $books = Book::orderBy('book_name')->search()->paginate(8);
+        $category = Category::all();
+        return view('search', [
+            'category' => $category,
+            'books' => $books,
+        ]);
+    }
+
+    public function searchcat(Request $request)
+    {
+        $books = Book::orderBy('book_name')->paginate(8);
+        $category = Category::all();
+        return view('searchcat', [
+            'category' => $category,
+            'books' => $books,
+        ]);
+    }
+
+
+
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -57,7 +86,6 @@ class BookController extends Controller
     {
         $book = Book::find($id);
         $category = Category::all();
-
         return view('components.books.detail', [
             'category' => $category,
             'book' => $book,
@@ -97,4 +125,7 @@ class BookController extends Controller
     {
         //
     }
+
+
+
 }

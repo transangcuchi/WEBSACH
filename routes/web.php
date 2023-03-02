@@ -2,11 +2,13 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SanphamController;
+use App\Book;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\LoginController;
+use Symfony\Component\Console\Input\Input;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +21,7 @@ use App\Http\Controllers\LoginController;
 |
 */
 
+
 Route::get('/', function () {
     return view('index');
 });
@@ -27,6 +30,9 @@ Route::get('/', function () {
 // Route::get('/create', [Book::class, 'create'])->name('create');
 
 Route::get('/', [BookController::class, 'index'])->name('index');
+
+Route::get('/search',[BookController::class,'search'])->name('search');
+Route::get('/searchcat',[BookController::class,'searchcat'])->name('search.cat');
 Route::get('/book/{id}', [BookController::class, 'show'])->name('detail');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
@@ -48,3 +54,10 @@ Route::post('/admin/update-sanpham', [SanphamController::class, 'UpdateSanpham']
 Route::get('/admin/xoa-sanpham-{id}', [SanphamController::class, 'XoaSanpham'])->name('xoasanpham');
 Route::get('/admin/edit-hinh-sanpham-{id}', [SanphamController::class, 'EditHinhSanpham'])->name('edithinhsanpham');
 Route::post('/admin/update-hinh-sanpham', [SanphamController::class, 'UpdateHinh'])->name('updatehinhsanpham');
+
+Route::get('/cart', [CartController::class, 'index'])->name('cartindex');
+Route::get('/cart/{id}', [CartController::class, "create"])->name('cartuser');
+Route::get('cart/destroy', [CartController::class,"clearcart"])->name('clearcart');
+
+
+

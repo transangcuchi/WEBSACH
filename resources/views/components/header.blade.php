@@ -21,7 +21,7 @@
                                 <ul class="dropdown-menu dropdown-menu-dark">
                                     @foreach ($category as $item)
                                         <li>
-                                            <a class="dropdown-item" href="#">{{ $item['cat_name'] }}</a>
+                                            <a class="dropdown-item" href="{{ route('search.cat', $item['cat_id']) }}">{{ $item['cat_name'] }}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -32,8 +32,8 @@
             </div>
 
             <div class="flex-grow-1 d-flex">
-                <form class="d-flex form-inline flex-nowrap mx-0 mx-lg-auto p-1" method="GET">
-                    <input class="form-control me-2" name="search" type="text" placeholder="Tìm kiếm"
+                <form class="d-flex form-inline flex-nowrap mx-0 mx-lg-auto p-1" method="GET" action="{{ route('search') }}">
+                    <input class="form-control me-2 typeahead" name="search" type="text" placeholder="Tìm kiếm"
                         aria-label="Search">
                     <button class="btn btn-outline-info" type="submit"><i class="fa-solid fa-magnifying-glass"></i>
                         Tìm</button>
@@ -46,7 +46,7 @@
                             Hàng</a>
                     </li>
                     <li class="nav-item dropdown">
-                       
+
                             @if (!isset($_REQUEST['user']))
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
                             aria-expanded="false"><i class="fa-solid fa-user"></i> Tài Khoản</a>
@@ -62,7 +62,7 @@
                                 <li><a class="dropdown-item" href="#">Đăng xuất</a></li>
                             </ul>
                             @endif
-                        
+
                     </li>
                 </ul>
             </div>

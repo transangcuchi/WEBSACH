@@ -15,4 +15,13 @@ class Category extends Model
         'cat_name',
     ];
 
+    //
+    public function scopeSearchCat($query){
+        if(request()->search){
+            $search = request()->search;
+            $query->where('cat_id','LIKE','%'.$search.'%')->paginate(8);
+        }
+
+        return $query;
+    }
 }
