@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Book;
+use App\Category;
+use App\News;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -13,9 +16,22 @@ class CartController extends Controller
      */
     public function index()
     {
+
         if (!isset($_SESSION))
             session_start();
-        return view("components.cart");
+        $books = array();
+        if($_SESSION!=null)
+        {
+            var_dump($_SESSION);
+        foreach ($_SESSION['gio'] as $id) {
+            $books[] = Book::find($id);
+        }
+    }
+        $category = Category::all();
+        return view("components.cart", [
+            'books' => $books,
+            'category' => $category,
+        ]);
     }
 
     /**
@@ -23,10 +39,20 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        
-
+        if (!isset($_SESSION))
+        {
+            session_start();
+            $_SESSION['gio'][] = $id;
+        }            
+        $book = Book::find($id);
+        if ($book == null) {
+            return redirect(route('index'));
+        } else {
+            $_SESSION['gio'][] = $id;        
+            return redirect(route('cartindex'));
+        }
     }
 
     /**
@@ -40,6 +66,12 @@ class CartController extends Controller
         //
     }
 
+    public function clearcart()
+    {
+        session_destroy();
+        return redirect(route('cartindex'));
+    }
+
     /**
      * Display the specified resource.
      *
@@ -48,7 +80,7 @@ class CartController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -82,6 +114,7 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        //
+        echo "<script>alert('Đã xóa!') </script>";
+        return redirect(route('index'));
     }
 }

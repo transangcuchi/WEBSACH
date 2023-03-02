@@ -42,7 +42,7 @@
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php?mod=cart"><i class="fa-solid fa-cart-shopping"></i> Giỏ
+                        <a class="nav-link" href="{{ route('cartindex') }}"><i class="fa-solid fa-cart-shopping"></i> Giỏ
                             Hàng</a>
                     </li>
                     <li class="nav-item dropdown">

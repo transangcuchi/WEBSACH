@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\LoginController;
 
 /*
@@ -32,6 +33,11 @@ Route::post('/user.login', [LoginController::class, 'show'])->name('user.login')
 // Route::post('/', [Book::class, 'store'])->name('store');
 // Route::patch('/{id}', [Book::class, 'update'])->name('update');
 // Route::delete('/{id}', [Book::class, 'destroy'])->name('delete');
+
+
+Route::get('/cart', [CartController::class, 'index'])->name('cartindex');
+Route::get('/cart/{id}', [CartController::class, "create"])->name('cartuser');
+Route::get('cart/destroy', [CartController::class,"clearcart"])->name('clearcart');
 
 Route::get('/admin', [AdminController::class, 'index'])->name('adminindex');
 Route::get('/admin/{id}', [AdminController::class, 'show'])->name('adminshow');

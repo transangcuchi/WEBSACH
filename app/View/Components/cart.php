@@ -22,8 +22,7 @@ class cart extends Component
      * @return \Illuminate\View\View|string
      */
     public function render()
-    {
-        
+    {       
         return view('components.cart');
     }
 }
