@@ -1,14 +1,15 @@
 <?php
 
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\SanphamController;
 use App\Book;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use Symfony\Component\Console\Input\Input;
+use App\Http\Controllers\FallbackController;
+use App\Http\Controllers\Admin\SanphamController;
+use App\Http\Controllers\Admin\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,7 +42,9 @@ Route::post('/user.login', [LoginController::class, 'show'])->name('user.login')
 // Route::post('/', [Book::class, 'store'])->name('store');
 // Route::patch('/{id}', [Book::class, 'update'])->name('update');
 // Route::delete('/{id}', [Book::class, 'destroy'])->name('delete');
-
+Route::get('/cart', [CartController::class, 'index'])->name('cartindex');
+Route::get('/cart/{id}', [CartController::class, "create"])->name('cartuser');
+Route::get('cart/destroy', [CartController::class,"clearcart"])->name('clearcart');
 
 
 Route::get('/admin/dashboard', [DashboardController::class, 'Index'])->name('admindashboard');
@@ -59,5 +62,4 @@ Route::get('/cart', [CartController::class, 'index'])->name('cartindex');
 Route::get('/cart/{id}', [CartController::class, "create"])->name('cartuser');
 Route::get('cart/destroy', [CartController::class,"clearcart"])->name('clearcart');
 
-
-
+Route::fallback([FallbackController::class, 'index']);

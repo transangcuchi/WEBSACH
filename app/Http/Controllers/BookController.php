@@ -86,10 +86,14 @@ class BookController extends Controller
     {
         $book = Book::find($id);
         $category = Category::all();
-        return view('components.books.detail', [
-            'category' => $category,
-            'book' => $book,
-        ]);
+        if ($book === null) {
+            return view('errors.404');
+        } else {
+            return view('components.books.detail', [
+                'category' => $category,
+                'book' => $book,
+            ]);
+        }
     }
 
     /**
@@ -125,7 +129,4 @@ class BookController extends Controller
     {
         //
     }
-
-
-
 }

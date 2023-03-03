@@ -28,26 +28,6 @@
                 </div>
 
                 <div>
-                    <h4 class="mb-3 mt-4">Số lượng</h4>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="d-flex justify-content-start">
-                                <div class="input-group w-auto justify-content-start align-items-center">
-                                    <input type="button" value="-"
-                                        class="button-minus border btn-quantity rounded-circle icon-shape icon-sm mx-1"
-                                        data-field="quantity">
-                                    <input type="number" step="1" max="10" value="1" name="quantity"
-                                        class="quantity-field border text-center w-25">
-                                    <input type="button" value="+"
-                                        class="button-plus border btn-quantity rounded-circle icon-shape icon-sm"
-                                        data-field="quantity">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
                     <div class="row mt-5">
                         <div class="col-3">
                             <button class="btn btn-quantity">
