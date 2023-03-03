@@ -42,10 +42,10 @@ Route::post('/user.login', [LoginController::class, 'show'])->name('user.login')
 // Route::post('/', [Book::class, 'store'])->name('store');
 // Route::patch('/{id}', [Book::class, 'update'])->name('update');
 // Route::delete('/{id}', [Book::class, 'destroy'])->name('delete');
+Route::get('/destroy', [CartController::class,'clearcart'])->name('destroy');
 Route::get('/cart', [CartController::class, 'index'])->name('cartindex');
 Route::get('/cart/{id}', [CartController::class, "create"])->name('cartuser');
-Route::get('cart/destroy', [CartController::class,"clearcart"])->name('clearcart');
-
+Route::get('/cart/edit/{id}', [CartController::class, "edit"])->name('editcart');
 
 Route::get('/admin/dashboard', [DashboardController::class, 'Index'])->name('admindashboard');
 

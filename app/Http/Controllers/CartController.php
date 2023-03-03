@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Book;
 use App\Category;
 use App\News;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -14,20 +15,24 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function clearcart()
+    {
+        if (!isset($_SESSION))
+            session_start();
+        return view('components.destroy');
+    }
     public function index()
     {
-
         if (!isset($_SESSION))
             session_start();
         $books = array();
-        if($_SESSION!=null)
-        {
-            var_dump($_SESSION);
-        foreach ($_SESSION['gio'] as $id) {
-            $books[] = Book::find($id);
+        if ($_SESSION != null) {
+            foreach ($_SESSION['gio'] as $id) {
+                $books[] = Book::find($id);
+            }
         }
-    }
         $category = Category::all();
+        //session_destroy();
         return view("components.cart", [
             'books' => $books,
             'category' => $category,
@@ -41,16 +46,30 @@ class CartController extends Controller
      */
     public function create($id)
     {
-        if (!isset($_SESSION))
-        {
+        if (!isset($_SESSION)) {
             session_start();
+            $book = Book::find($id);
+            if ($book == null) {
+                return redirect(route('index'));
+            }
+            foreach ($_SESSION['gio'] as $value) {
+                if ($value == $id) {
+                    return redirect(route('cartindex'));
+                }
+            }
             $_SESSION['gio'][] = $id;
-        }            
+            return redirect(route('cartindex'));
+        }
+        foreach ($_SESSION['gio'] as $value) {
+            if ($value == $id) {
+                return redirect(route('cartindex'));
+            }
+        }
         $book = Book::find($id);
         if ($book == null) {
             return redirect(route('index'));
-        } else {
-            $_SESSION['gio'][] = $id;        
+        } else {                               
+            $_SESSION['gio'][] = $id;
             return redirect(route('cartindex'));
         }
     }
@@ -66,11 +85,6 @@ class CartController extends Controller
         //
     }
 
-    public function clearcart()
-    {
-        session_destroy();
-        return redirect(route('cartindex'));
-    }
 
     /**
      * Display the specified resource.
@@ -80,7 +94,6 @@ class CartController extends Controller
      */
     public function show($id)
     {
-
     }
 
     /**
@@ -91,7 +104,16 @@ class CartController extends Controller
      */
     public function edit($id)
     {
-        //
+        if (!isset($_SESSION))
+            session_start();
+        $giomoi = array();
+        foreach ($_SESSION['gio'] as $value) {
+            if ($value != $id) {
+                $giomoi[] = $value;
+            }
+        }
+        $_SESSION['gio'] = $giomoi;
+        return redirect(route('cartindex'));
     }
 
     /**
@@ -112,9 +134,4 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        echo "<script>alert('Đã xóa!') </script>";
-        return redirect(route('index'));
-    }
 }

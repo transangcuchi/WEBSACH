@@ -28,18 +28,24 @@
                 </div>
 
                 <div>
+                
                     <div class="row mt-5">
                         <div class="col-3">
                             <button class="btn btn-quantity">
                                 &nbsp; <i class="fa-solid fa-credit-card"></i> Mua ngay &nbsp;
                             </button>
                         </div>
-                        <div class="col-4">
+                        
+                        <div class="col-4">    
+                            <form method="get" action="{{ route('cartuser',$book['book_id']) }}">                       
                             <button class="btn btn-default border border-2">
-                                <i class="fa-solid fa-cart-shopping"></i> Thêm vào giỏ
+                                <i  class="fa-solid fa-cart-shopping"></i> Thêm vào giỏ
                             </button>
+                        </form>
                         </div>
+                    
                     </div>
+                
                 </div>
             </div>
         </div>
