@@ -16,12 +16,12 @@ class Category extends Model
     ];
 
     //
-    public function scopeSearchCat($query){
+    /*public function scopeSearchCat($query){
         if(request()->search){
             $search = request()->search;
             $query->where('cat_id','LIKE','%'.$search.'%')->paginate(8);
         }
 
         return $query;
-    }
+    }*/
 }

@@ -16,16 +16,9 @@
     </div>
 
     <div class="container py-4">
-        <swiper-container
-            style="--swiper-navigation-color: #3faede; --swiper-pagination-color: #fff"
-            class="mySwiper shadow-sm rounded"
-            navigation="true"
-            loop="true"
-            space-between="30"
-            centered-slides="true"
-            autoplay-delay="2500"
-            autoplay-disable-on-interaction="false"
-        >
+        <swiper-container style="--swiper-navigation-color: #3faede; --swiper-pagination-color: #fff"
+            class="mySwiper shadow-sm rounded" navigation="true" loop="true" space-between="30" centered-slides="true"
+            autoplay-delay="2500" autoplay-disable-on-interaction="false">
             @foreach ($banner as $new)
                 <x-books.carouselitem :banner="$new" />
             @endforeach
@@ -46,4 +39,5 @@
         </div>
     </div>
 </body>
+
 </html>

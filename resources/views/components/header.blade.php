@@ -21,7 +21,7 @@
                                 <ul class="dropdown-menu dropdown-menu-dark">
                                     @foreach ($category as $item)
                                         <li>
-                                            <a class="dropdown-item" href="{{ route('search.cat', $item['cat_id']) }}">{{ $item['cat_name'] }}</a>
+                                            <a class="dropdown-item" href="{{ route('category', $item['cat_id']) }}">{{ $item['cat_name'] }}</a>
                                         </li>
                                     @endforeach
                                 </ul>

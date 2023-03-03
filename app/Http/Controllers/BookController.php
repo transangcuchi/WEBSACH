@@ -42,16 +42,16 @@ class BookController extends Controller
         ]);
     }
 
-    public function searchcat(Request $request)
+    public function bookByCategory($id)
     {
-        $books = Book::orderBy('book_name')->paginate(8);
         $category = Category::all();
-        return view('searchcat', [
+        $books = Book::where('cat_id',$id)->paginate(8);
+
+        return view('bookbycategory', [
             'category' => $category,
             'books' => $books,
         ]);
     }
-
 
 
 

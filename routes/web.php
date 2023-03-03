@@ -33,7 +33,7 @@ Route::get('/', function () {
 Route::get('/', [BookController::class, 'index'])->name('index');
 
 Route::get('/search',[BookController::class,'search'])->name('search');
-Route::get('/searchcat',[BookController::class,'searchcat'])->name('search.cat');
+Route::get('/category/{name}',[BookController::class,'bookByCategory'])->name('category');
 Route::get('/book/{id}', [BookController::class, 'show'])->name('detail');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
