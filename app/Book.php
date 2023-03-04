@@ -26,13 +26,12 @@ class Book extends Model
         'description',
         'pub_id',
     ];
-    public function scopeSearch($query){
-        if(request()->search){
+    public function scopeSearch($query)
+    {
+        if (request()->search) {
             $search = request()->search;
-            $query->where('book_name','LIKE','%'.$search.'%')->paginate(8);
+            $query->where('book_name', 'LIKE', '%' . $search . '%')->paginate(8);
         }
-
         return $query;
     }
-
 }

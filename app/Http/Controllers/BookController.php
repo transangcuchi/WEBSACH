@@ -36,10 +36,20 @@ class BookController extends Controller
     {
         $books = Book::orderBy('book_name')->search()->paginate(8);
         $category = Category::all();
-        return view('search', [
-            'category' => $category,
-            'books' => $books,
-        ]);
+        if($books)
+        {
+            return view('search', [
+                'category' => $category,
+                'books' => $books,
+            ]);
+        }
+        else
+        {
+            return view('search', [
+                'category' => $category,
+                'books' => $books,
+            ]);
+        }
     }
 
     public function bookByCategory($id)

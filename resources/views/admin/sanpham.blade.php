@@ -31,7 +31,7 @@
                             <td>{{ $sanpham->book_id }}</td>
                             <td>{{ $sanpham->book_name }}</td>
                             <td>
-                                <img src="{{ asset($sanpham->img) }}" alt="" height="130px" width="100px">
+                                <img src="../images/book/{{ $sanpham->img }}" alt="" height="130px" width="100px">
                                 <br>
                                 <a href="{{ route('edithinhsanpham',$sanpham->book_id) }}" class="btn btn-primary">Đổi hình</a>
                             </td>

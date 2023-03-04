@@ -6,7 +6,9 @@ use App\Book;
 use App\Category;
 use App\Http\Controllers\Controller;
 use App\Publisher;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Date;
 
 class SanphamController extends Controller
 {
@@ -40,8 +42,8 @@ class SanphamController extends Controller
 
         $img = $request->file('img');
         $ten_hinh = hexdec(uniqid()) . '.' . $img->getClientOriginalExtension();
-        $request->img->move(public_path('images'), $ten_hinh);
-        $img_url = 'images/' . $ten_hinh;
+        $request->img->move(public_path('images/book'), $ten_hinh);
+        $img_url = $ten_hinh;
 
 
         $maloai = $request->cat_id;
@@ -58,7 +60,8 @@ class SanphamController extends Controller
             'cat_id' => $tenloai,
             'pub_id' => $tenloaipub,
             'img' => $img_url,
-        ]);
+            'updated_at'=> Carbon::now(),
+        ]); 
 
 
         return redirect()->route('sanpham')->with('message', 'Thêm sản phẩm thành công!');
@@ -130,8 +133,8 @@ class SanphamController extends Controller
         $id=$request->id;
         $img = $request->file('img');
         $ten_hinh = hexdec(uniqid()).'.'. $img->getClientOriginalExtension();
-        $request->img->move(public_path('images'), $ten_hinh);
-        $img_url='images/'.$ten_hinh;
+        $request->img->move(public_path('images/book'), $ten_hinh);
+        $img_url=$ten_hinh;
 
         Book::findOrFail($id)->update([
             'img' => $img_url,
