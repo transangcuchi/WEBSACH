@@ -46,21 +46,24 @@ class CartController extends Controller
      */
     public function create($id)
     {
-        if (!isset($_SESSION)) {
+        if(!isset($_SESSION)) {
             session_start();
             $book = Book::find($id);
             if ($book == null) {
                 return redirect(route('index'));
             }
-            foreach ($_SESSION['gio'] as $value) {
-                if ($value == $id) {
-                    return redirect(route('cartindex'));
+            if($_SESSION!=null) 
+            {
+                foreach($_SESSION['gio'] as $value) {
+                    if ($value == $id) {
+                        return redirect(route('cartindex'));
+                    }
                 }
-            }
+            }                 
             $_SESSION['gio'][] = $id;
             return redirect(route('cartindex'));
         }
-        foreach ($_SESSION['gio'] as $value) {
+        foreach($_SESSION['gio'] as $value) {
             if ($value == $id) {
                 return redirect(route('cartindex'));
             }
@@ -68,7 +71,7 @@ class CartController extends Controller
         $book = Book::find($id);
         if ($book == null) {
             return redirect(route('index'));
-        } else {                               
+        } else {
             $_SESSION['gio'][] = $id;
             return redirect(route('cartindex'));
         }
