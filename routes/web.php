@@ -1,6 +1,7 @@
 <?php
 
 use App\Book;
+use App\Http\Controllers\Admin\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CartController;
@@ -47,16 +48,26 @@ Route::get('/cart', [CartController::class, 'index'])->name('cartindex');
 Route::get('/cart/{id}', [CartController::class, "create"])->name('cartuser');
 Route::get('/cart/edit/{id}', [CartController::class, "edit"])->name('editcart');
 
-Route::get('/admin/dashboard', [DashboardController::class, 'Index'])->name('admindashboard');
+Route::prefix('admin')->group(function(){
+    Route::get('login',[AuthController::class,'Login'])->name('adminlogin');
 
-Route::get('/admin/sanpham', [SanphamController::class, 'Index'])->name('sanpham');
-Route::get('/admin/themsanpham', [SanphamController::class, 'AddSanPham'])->name('themsanpham');
-Route::post('/admin/store-sanpham', [SanphamController::class, 'StoreSanpham'])->name('storesanpham');
-Route::get('/admin/edit-sanpham-{id}', [SanphamController::class, 'EditSanpham'])->name('editsanpham');
-Route::post('/admin/update-sanpham', [SanphamController::class, 'UpdateSanpham'])->name('updatesanpham');
-Route::get('/admin/xoa-sanpham-{id}', [SanphamController::class, 'XoaSanpham'])->name('xoasanpham');
-Route::get('/admin/edit-hinh-sanpham-{id}', [SanphamController::class, 'EditHinhSanpham'])->name('edithinhsanpham');
-Route::post('/admin/update-hinh-sanpham', [SanphamController::class, 'UpdateHinh'])->name('updatehinhsanpham');
+    Route::post('login',[AuthController::class,'CheckLogin'])->name('adminchecklogin');
+});
+
+Route::prefix('admin')->middleware('adminlogin')->group(function () {
+
+    Route::get('logout',[AuthController::class,'LogOut'])->name('adminlogout');
+
+    Route::get('dashboard', [DashboardController::class, 'Index'])->name('admindashboard');
+    Route::get('sanpham', [SanphamController::class, 'Index'])->name('sanpham');
+    Route::get('themsanpham', [SanphamController::class, 'AddSanPham'])->name('themsanpham');
+    Route::post('store-sanpham', [SanphamController::class, 'StoreSanpham'])->name('storesanpham');
+    Route::get('edit-sanpham-{id}', [SanphamController::class, 'EditSanpham'])->name('editsanpham');
+    Route::post('update-sanpham', [SanphamController::class, 'UpdateSanpham'])->name('updatesanpham');
+    Route::get('xoa-sanpham-{id}', [SanphamController::class, 'XoaSanpham'])->name('xoasanpham');
+    Route::get('edit-hinh-sanpham-{id}', [SanphamController::class, 'EditHinhSanpham'])->name('edithinhsanpham');
+    Route::post('update-hinh-sanpham', [SanphamController::class, 'UpdateHinh'])->name('updatehinhsanpham');
+});
 
 Route::get('/cart', [CartController::class, 'index'])->name('cartindex');
 Route::get('/cart/{id}', [CartController::class, "create"])->name('cartuser');
