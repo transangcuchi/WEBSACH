@@ -46,22 +46,17 @@ class SanphamController extends Controller
         $img_url = $ten_hinh;
 
 
-        $maloai = $request->cat_id;
-        $tenloai = Category::Where('cat_id', $maloai)->value('cat_id');
-        $maloaipub = $request->pub_id;
-        $tenloaipub = Publisher::Where('pub_id', $maloaipub)->value('pub_id');
-
 
         Book::insert([
             'book_id' => $request->book_id,
             'book_name' => $request->book_name,
             'price' => $request->price,
             'description' => $request->description,
-            'cat_id' => $tenloai,
-            'pub_id' => $tenloaipub,
+            'cat_id' => $request->cat_id,
+            'pub_id' => $request->pub_id,
             'img' => $img_url,
             'updated_at'=> Carbon::now(),
-        ]); 
+        ]);
 
 
         return redirect()->route('sanpham')->with('message', 'Thêm sản phẩm thành công!');

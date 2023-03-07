@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    @unless ($books ==null)   
+    @unless ($books ==null)
     <div class="container">
         <div class="row">
                 <table class="table ">
@@ -22,7 +22,7 @@
                         <tr>
                             <th scope="col">Tên sách</th>
                             <th scope="col">Giá</th>
-                            <th scope="col">Số lượng</th>                            
+                            <th scope="col">Số lượng</th>
                             <th scope="col" ></th>
                         </tr>
                     </thead>
@@ -34,31 +34,31 @@
                                 <td>{{ $item['sl'] }}</td>
                                 <td>
                                     <form action="{{ route('editcart',$item['book_id']) }}" method="get">
-                                        <button type="submit" class="btn btn-danger">Xóa</button></td>                           
-                                    </form>                                 
+                                        <button type="submit" class="btn btn-danger">Xóa</button></td>
+                                    </form>
                             </tr>
                         @endforeach
 
-                    </tbody>                    
-                </table>  
+                    </tbody>
+                </table>
         </div>
-        <a href='' class='btn btn-success' onclick='thanhtoan()'>Thanh Toán</a> |
+        <a href='{{ route('index') }}' class='btn btn-success'>Thanh Toán</a> |
         <a href='{{ route("index") }}' class='btn btn-info'>Tiếp tục mua</a> |
-         <a  onclick='clearsession()' class='btn btn-danger'>Xóa giỏ hàng</a>  
-    </div>    
+         <a  onclick='clearsession()' class='btn btn-danger'>Xóa giỏ hàng</a>
+    </div>
     @endunless ()
     @if ($books==null)
         <h1 class="text-center">Bạn chưa mua gì!</h1>
     @endif
-          
+
 </body>
 <script>
     function thanhtoan() {
         alert("Thanh toán thành công");
     }
     function clearsession() {
-        
-        alert("Xóa thành công");             
+
+        alert("Xóa thành công");
         window.location.href='{{ route("destroy") }}';
     }
 </script>

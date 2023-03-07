@@ -11,6 +11,7 @@ use Symfony\Component\Console\Input\Input;
 use App\Http\Controllers\FallbackController;
 use App\Http\Controllers\Admin\SanphamController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,3 +75,6 @@ Route::get('/cart/{id}', [CartController::class, "create"])->name('cartuser');
 Route::get('cart/destroy', [CartController::class,"clearcart"])->name('clearcart');
 
 Route::fallback([FallbackController::class, 'index']);
+
+route::get('/thanhtoan', [OrderController::class, 'Index'])->name('thanhtoan');
+Route::post('/storedonhang',[OrderController::class, 'StoreDonhang'])->name('storedonhang');
