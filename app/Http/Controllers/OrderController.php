@@ -55,6 +55,7 @@ class OrderController extends Controller
                 ]);
             }
         }
-        return redirect()->route('index');
+        
+        return view('components.destroy');       
     }
 }

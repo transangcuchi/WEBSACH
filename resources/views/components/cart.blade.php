@@ -22,7 +22,6 @@
                         <tr>
                             <th scope="col">Tên sách</th>
                             <th scope="col">Giá</th>
-                            <th scope="col">Số lượng</th>
                             <th scope="col" ></th>
                         </tr>
                     </thead>
@@ -42,7 +41,7 @@
                     </tbody>
                 </table>
         </div>
-        <a href='{{ route('index') }}' class='btn btn-success'>Thanh Toán</a> |
+        <a href='{{ route('thanhtoan') }}' class='btn btn-success'>Thanh Toán</a> |
         <a href='{{ route("index") }}' class='btn btn-info'>Tiếp tục mua</a> |
          <a  onclick='clearsession()' class='btn btn-danger'>Xóa giỏ hàng</a>
     </div>

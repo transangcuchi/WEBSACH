@@ -27,7 +27,6 @@
                             <tr>
                                 <th scope="col">Tên sách</th>
                                 <th scope="col">Giá</th>
-                                <th scope="col">Số lượng</th>
                                 <th scope="col" ></th>
                             </tr>
                         </thead>
@@ -42,6 +41,18 @@
 
                         </tbody>
                     </table>
+                </div>
+                <div class="text-center">
+                    @if ($errors->any())
+                        <div class="text-danger h3 text-lg-start fw-bold">
+                            Something went wrong...
+                        </div>
+                        <ul class="list-group list-unstyled">
+                            @foreach ($errors->all() as $item)
+                                <li class="alert alert-danger">{{ $item }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
                 </div>
                 <form action="{{ route('storedonhang') }}" method="POST" enctype="multipart/form-data">
                     @csrf

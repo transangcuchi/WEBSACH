@@ -52,9 +52,11 @@
                     </a>
                 </div>
                 <div class="pt-2">
-                    <a href="{{ route('detail', $book['book_id']) }}" class="btn btn-primary col-12">
-                        Thông tin chi tiết
-                    </a>
+                    <form method="get" action="{{ route('cartuser',$book['book_id']) }}">                       
+                        <button class="btn btn-primary col-12">
+                            <i  class="fa-solid fa-cart-shopping fa-lg"></i> Thêm vào giỏ
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
