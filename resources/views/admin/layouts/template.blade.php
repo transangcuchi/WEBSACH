@@ -80,9 +80,15 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('donhang') }}">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Đơn hàng</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('chitietdonhang') }}">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Chi tiết đơn hàng</span></a>
             </li>
 
 

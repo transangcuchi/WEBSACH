@@ -11,6 +11,7 @@ use Symfony\Component\Console\Input\Input;
 use App\Http\Controllers\FallbackController;
 use App\Http\Controllers\Admin\SanphamController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\DonhangController;
 use App\Http\Controllers\OrderController;
 
 /*
@@ -68,6 +69,9 @@ Route::prefix('admin')->middleware('adminlogin')->group(function () {
     Route::get('xoa-sanpham-{id}', [SanphamController::class, 'XoaSanpham'])->name('xoasanpham');
     Route::get('edit-hinh-sanpham-{id}', [SanphamController::class, 'EditHinhSanpham'])->name('edithinhsanpham');
     Route::post('update-hinh-sanpham', [SanphamController::class, 'UpdateHinh'])->name('updatehinhsanpham');
+    Route::get('donhang', [DonhangController::class, 'Index'])->name('donhang');
+    Route::get('xoa-donhang-{id}', [DonhangController::class, 'XoaDonhang'])->name('xoadonhang');
+    Route::get('chitietdonhang', [DonhangController::class, 'ChiTietDonhang'])->name('chitietdonhang');
 });
 
 Route::get('/cart', [CartController::class, 'index'])->name('cartindex');
