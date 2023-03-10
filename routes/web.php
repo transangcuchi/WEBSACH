@@ -82,3 +82,4 @@ Route::fallback([FallbackController::class, 'index']);
 
 route::get('/thanhtoan', [OrderController::class, 'Index'])->name('thanhtoan');
 Route::post('/storedonhang',[OrderController::class, 'StoreDonhang'])->name('storedonhang');
+Route::post('/muangay',[OrderController::class, 'StoreDonhang'])->name('muangay');
