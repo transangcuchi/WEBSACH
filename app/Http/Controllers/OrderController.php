@@ -55,7 +55,14 @@ class OrderController extends Controller
                 ]);
             }
         }
-        
-        return view('components.destroy');       
+
+        return view('components.destroy');
+    }
+    public function MuaNgay($id)
+    {
+        $category = Category::all();
+        $books = array();
+        $books[] = Book::find($id); 
+        return view('checkout', compact('category', 'books'));
     }
 }

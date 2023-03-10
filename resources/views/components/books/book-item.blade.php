@@ -29,7 +29,7 @@
         </a>
         <div class="card-body">
             <div class="text-center">
-                <a 
+                <a href="{{ route('detail', $book['book_id']) }}"
                     class="text-decoration-none text-dark"
                     href=""
                     data-bs-toggle="tooltip" 
@@ -47,9 +47,11 @@
             {{-- <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div> --}}
             <div class="align-text-bottom">
                 <div>
-                    <a href="" class="btn btn-outline-primary col-12">
-                        <i class="fa-solid fa-cart-shopping fa-lg"></i> Mua ngay
-                    </a>
+                    <form method="get" action="{{ route('muangay',$book['book_id']) }}">                       
+                        <button class="btn btn-outline-primary col-12">
+                            <i  class="fa-solid fa-cart-shopping fa-lg"></i> Mua ngay
+                        </button>
+                    </form>
                 </div>
                 <div class="pt-2">
                     <form method="get" action="{{ route('cartuser',$book['book_id']) }}">                       
